@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 2. Reading 1: The Power of Creativity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .container {
+            max-width: 900px;
+        }
+        .score-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #e5e7eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .score-text-lg {
+            font-size: 32px; /* Set to 32px as requested */
+            font-weight: bold;
+        }
+        .correct-answer-icon {
+            color: #10b981; /* green-500 */
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 1.25rem; /* Larger icon */
+        }
+        .incorrect-answer-icon {
+            color: #ef4444; /* red-500 */
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 1.25rem; /* Larger icon */
+        }
+        .correct-border {
+            border-color: #10b981 !important;
+        }
+        .incorrect-border {
+            border-color: #ef4444 !important;
+        }
+        /* Custom styling for the table inputs */
+        .table-input {
+            width: 100%;
+            padding: 4px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center py-12">
+    <div class="container bg-white p-8 rounded-2xl shadow-xl space-y-8">
+        <header class="text-center space-y-2">
+            <div id="score-display" class="score-circle mx-auto mb-4 font-bold text-gray-700">
+                <span id="score-text" class="score-text-lg">--/20</span>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-800">Unit 2 Reading 1 The Power of Creativity (pp. 25-26)</h1>
+            <p class="text-lg text-gray-500">Practice your reading comprehension skills by answering the questions below.</p>
+        </header>
+
+        <form id="quiz-form" class="space-y-6">
+
+            <!-- Section 1: Questions 1-5 (Headings) -->
+            <section class="space-y-4">
+                <h2 class="text-2xl font-semibold text-gray-700">Questions 1 to 5 (Headings)</h2>
+                <p class="text-sm text-gray-500 italic">From the following headings 1-5 choose a suitable heading for each paragraph. Write the correct number on your answer sheet.</p>
+
+                <div class="grid md:grid-cols-2 gap-2 text-gray-600">
+                    <div>1. William's journey to self-education</div>
+                    <div>2. The challenges in making the windmills</div>
+                    <div>3. Inspiring results of William's achievement</div>
+                    <div>4. The success of William's windmills</div>
+                    <div>5. William's struggles in life</div>
+                </div>
+
+                <div class="space-y-2 mt-4">
+                    <div class="flex items-center space-x-2">
+                        <label class="block text-gray-700 flex-none w-32">Paragraph B =</label>
+                        <input type="text" id="q1" name="q1" class="flex-grow px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <label class="block text-gray-700 flex-none w-32">Paragraph C =</label>
+                        <input type="text" id="q2" name="q2" class="flex-grow px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <label class="block text-gray-700 flex-none w-32">Paragraph D =</label>
+                        <input type="text" id="q3" name="q3" class="flex-grow px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <label class="block text-gray-700 flex-none w-32">Paragraph E =</label>
+                        <input type="text" id="q4" name="q4" class="flex-grow px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <label class="block text-gray-700 flex-none w-32">Paragraph F =</label>
+                        <input type="text" id="q5" name="q5" class="flex-grow px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Questions 6-12 (T/F/NG) -->
+            <section class="space-y-4">
+                <h2 class="text-2xl font-semibold text-gray-700">Questions 6 to 12 (True / False / Not Given)</h2>
+                <p class="text-sm text-gray-500 italic">Do the following statements agree with the information given in the Reading Passage? Write **TRUE (T)**, **FALSE (F)**, or **NOT GIVEN (NG)**.</p>
+                <div class="space-y-2">
+                    <div class="flex items-center space-x-2" id="q6-container">
+                        <span class="flex-grow">6. Some Malawians started to starve to death in five months.</span>
+                        <input type="text" id="q6" name="q6" class="ml-auto w-20 px-2 py-1 bg-white border border-gray-300 rounded-md shadow-sm text-sm uppercase text-center">
+                    </div>
+                    <div class="flex items-center space-x-2" id="q7-container">
+                        <span class="flex-grow">7. Even with the drought, William was sent to school by his family.</span>
+                        <input type="text" id="q7" name="q7" class="ml-auto w-20 px-2 py-1 bg-white border border-gray-300 rounded-md shadow-sm text-sm uppercase text-center">
+                    </div>
+                    <div class="flex items-center space-x-2" id="q8-container">
+                        <span class="flex-grow">8. William used a science book in guiding him in windmill making process.</span>
+                        <input type="text" id="q8" name="q8" class="ml-auto w-20 px-2 py-1 bg-white border border-gray-300 rounded-md shadow-sm text-sm uppercase text-center">
+                    </div>
+                    <div class="flex items-center space-x-2" id="q9-container">
+                        <span class="flex-grow">9. William used a computer in building his first windmill.</span>
+                        <input type="text" id="q9" name="q9" class="ml-auto w-20 px-2 py-1 bg-white border border-gray-300 rounded-md shadow-sm text-sm uppercase text-center">
+                    </div>
+                    <div class="flex items-center space-x-2" id="q10-container">
+                        <span class="flex-grow">10. A number of people including his family believed in William when he began making his windmill.</span>
+                        <input type="text" id="q10" name="q10" class="ml-auto w-20 px-2 py-1 bg-white border border-gray-300 rounded-md shadow-sm text-sm uppercase text-center">
+                    </div>
+                    <div class="flex items-center space-x-2" id="q11-container">
+                        <span class="flex-grow">11. In the process of making the windmill, William modified and developed not only his design, but also the procedure.</span>
+                        <input type="text" id="q11" name="q11" class="ml-auto w-20 px-2 py-1 bg-white border border-gray-300 rounded-md shadow-sm text-sm uppercase text-center">
+                    </div>
+                    <div class="flex items-center space-x-2" id="q12-container">
+                        <span class="flex-grow">12. William wrote his own book and created a website to educate people.</span>
+                        <input type="text" id="q12" name="q12" class="ml-auto w-20 px-2 py-1 bg-white border border-gray-300 rounded-md shadow-sm text-sm uppercase text-center">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Questions 13-15 (Multiple Choice) -->
+            <section class="space-y-4">
+                <h2 class="text-2xl font-semibold text-gray-700">Questions 13 to 15 (Multiple Choice)</h2>
+                <p class="text-sm text-gray-500 italic">Choose the correct letter, A, B or C. Write only the correct letter on your answer sheet.</p>
+                <div class="space-y-4">
+                    <div id="q13-container">
+                        <p class="text-gray-700">13. Most people in Malawi, Africa don't have enough water for their use; hence, Malawians sourced water from _______.</p>
+                        <div class="flex flex-col space-y-2 mt-2 ml-4">
+                            <label class="flex items-center"><input type="radio" name="q13" value="A" class="form-radio text-indigo-600"> <span class="ml-2">A. rivers or seas</span></label>
+                            <label class="flex items-center"><input type="radio" name="q13" value="B" class="form-radio text-indigo-600"> <span class="ml-2">B. wells or streams</span></label>
+                            <label class="flex items-center"><input type="radio" name="q13" value="C" class="form-radio text-indigo-600"> <span class="ml-2">C. lakes or dams</span></label>
+                        </div>
+                    </div>
+                    <div id="q14-container">
+                        <p class="text-gray-700">14. Most families in Malawi experienced hunger and lack of water. There was _______.</p>
+                        <div class="flex flex-col space-y-2 mt-2 ml-4">
+                            <label class="flex items-center"><input type="radio" name="q14" value="A" class="form-radio text-indigo-600"> <span class="ml-2">A. efficiency</span></label>
+                            <label class="flex items-center"><input type="radio" name="q14" value="B" class="form-radio text-indigo-600"> <span class="ml-2">B. prevention</span></label>
+                            <label class="flex items-center"><input type="radio" name="q14" value="C" class="form-radio text-indigo-600"> <span class="ml-2">C. poverty</span></label>
+                        </div>
+                    </div>
+                    <div id="q15-container">
+                        <p class="text-gray-700">15. William didn't know much about _______ language, but he made use of the pictures and diagrams to understand the book.</p>
+                        <div class="flex flex-col space-y-2 mt-2 ml-4">
+                            <label class="flex items-center"><input type="radio" name="q15" value="A" class="form-radio text-indigo-600"> <span class="ml-2">A. Malawian</span></label>
+                            <label class="flex items-center"><input type="radio" name="q15" value="B" class="form-radio text-indigo-600"> <span class="ml-2">B. African</span></label>
+                            <label class="flex items-center"><input type="radio" name="q15" value="C" class="form-radio text-indigo-600"> <span class="ml-2">C. English</span></label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Questions 16-20 (Table Completion) -->
+            <section class="space-y-4">
+                <h2 class="text-2xl font-semibold text-gray-700">Questions 16 to 20 (Complete the text/table)</h2>
+                <p class="text-sm text-gray-500 italic">Write no more than TWO WORDS AND/OR A NUMBER for each answer. Write the answer in the correct space on your answer sheet.</p>
+
+                <div class="relative overflow-x-auto rounded-lg border border-gray-300">
+                    <table class="w-full text-sm text-left text-gray-500">
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 font-medium text-gray-900 w-1/2">
+                                    In Malawi, poverty is very high that only
+                                </td>
+                                <td class="px-6 py-4 w-1/4">
+                                    <input type="text" id="q16" name="q16" class="table-input">
+                                </td>
+                                <td class="px-6 py-4 w-1/4">
+                                    percent of Malawians can afford electricity.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-medium text-gray-900 w-1/2">
+                                    In 2001, life became more difficult. William then was only
+                                </td>
+                                <td class="px-6 py-4 w-1/4">
+                                    <input type="text" id="q17" name="q17" class="table-input">
+                                </td>
+                                <td class="px-6 py-4 w-1/4">
+                                    years old.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-medium text-gray-900 w-1/2">
+                                    According to William, within five months Malawians starve to death and
+                                </td>
+                                <td class="px-6 py-4 w-1/4">
+                                    <input type="text" id="q18" name="q18" class="table-input">
+                                </td>
+                                <td class="px-6 py-4 w-1/4">
+                                    meal per day.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="px-6 py-4 font-medium text-gray-900">
+                                    William did not allow people's disbelief in his ability to create windmills to stop him because he was
+                                    <input type="text" id="q19" name="q19" class="table-input inline w-36 mx-2">.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="px-6 py-4 font-medium text-gray-900">
+                                    William changed and developed his design that only
+                                    <input type="text" id="q20" name="q20" class="table-input inline w-24 mx-2"> bulb was initially powered.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <button type="submit" id="submit-button" class="w-full bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-300">
+                Submit Answers
+            </button>
+        </form>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('quiz-form');
+            const submitButton = document.getElementById('submit-button');
+            const scoreText = document.getElementById('score-text');
+            const scoreCircle = document.getElementById('score-display');
+
+            // --- Updated Answer Key for "The Power of Creativity" ---
+            const answerKey = {
+                'q1': '5',
+                'q2': '1',
+                'q3': '2',
+                'q4': '4',
+                'q5': '3',
+                'q6': 'F',
+                'q7': 'F',
+                'q8': 'T',
+                'q9': 'NG',
+                'q10': 'F',
+                'q11': 'NG',
+                'q12': 'F',
+                'q13': 'B',
+                'q14': 'C',
+                'q15': 'C',
+                'q16': '2',
+                'q17': '14',
+                'q18': '1',
+                'q19': 'confident',
+                'q20': '1' // Accepts '1' or 'one' in the check logic
+            };
+
+            const totalQuestions = Object.keys(answerKey).length;
+
+            // Helper function to normalize text answers for case-insensitivity and number variants
+            const normalizeAnswer = (answer) => {
+                if (typeof answer !== 'string') return '';
+                let normalized = answer.trim().toLowerCase();
+                // Check if '1' is answered as 'one' or vice versa
+                if (normalized === 'one') return '1';
+                if (normalized === '1') return '1';
+                return normalized;
+            };
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                let score = 0;
+                const formElements = form.querySelectorAll('input, select, textarea');
+
+                // Disable all form inputs
+                formElements.forEach(el => el.disabled = true);
+                submitButton.disabled = true;
+
+                // Remove previous results/icons
+                document.querySelectorAll('.correct-answer-icon, .incorrect-answer-icon, .correct-hint').forEach(el => el.remove());
+                document.querySelectorAll('.correct-border, .incorrect-border').forEach(el => el.classList.remove('correct-border', 'incorrect-border'));
+
+
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const qId = `q${i}`;
+                    const rawCorrectAnswer = answerKey[qId];
+                    const correctAnswer = normalizeAnswer(rawCorrectAnswer);
+                    let userAnswer = '';
+                    let inputElement;
+
+                    if (i >= 13 && i <= 15) {
+                        // Handle Radio Buttons (Multiple Choice)
+                        inputElement = document.querySelector(`input[name="${qId}"]:checked`);
+                        if (inputElement) {
+                            userAnswer = inputElement.value;
+                        }
+                    } else {
+                        // Handle Text Inputs (Headings, T/F/NG, Fill-in-the-Blanks)
+                        inputElement = document.getElementById(qId);
+                        if (inputElement) {
+                            userAnswer = inputElement.value;
+                        }
+                    }
+
+                    const normalizedUserAnswer = normalizeAnswer(userAnswer);
+                    let isCorrect = false;
+
+                    // Specific check for Q20 to accept 'one' as well as '1' (already handled by normalizeAnswer for the number, but explicit check for the key's value)
+                    if (qId === 'q20') {
+                        isCorrect = (normalizedUserAnswer === '1');
+                    } else {
+                         isCorrect = (normalizedUserAnswer === correctAnswer);
+                    }
+
+
+                    const container = inputElement ? inputElement.closest('div, td') : document.getElementById(qId + '-container');
+
+                    if (isCorrect) {
+                        score++;
+                        if (inputElement && inputElement.type === 'text') {
+                             inputElement.classList.add('correct-border');
+                        }
+                    } else {
+                        if (inputElement && inputElement.type === 'text') {
+                             inputElement.classList.add('incorrect-border');
+                        }
+                    }
+
+                    // --- Append Icon and Hint ---
+                    if (container) {
+                        const icon = document.createElement('span');
+                        icon.classList.add('font-bold', 'ml-2');
+
+                        if (isCorrect) {
+                            icon.textContent = '✓';
+                            icon.classList.add('correct-answer-icon');
+                        } else {
+                            icon.textContent = '✗';
+                            icon.classList.add('incorrect-answer-icon');
+                            
+                            // Add hint for incorrect answers
+                            const correctHintSpan = document.createElement('span');
+                            correctHintSpan.classList.add('text-sm', 'text-red-500', 'ml-2', 'correct-hint');
+                            correctHintSpan.textContent = `Correct: ${rawCorrectAnswer}`;
+                            container.appendChild(correctHintSpan);
+                        }
+                        container.appendChild(icon);
+                    }
+                }
+
+                // Display total score in 32px bold font
+                scoreText.textContent = `${score}/${totalQuestions}`;
+                scoreCircle.classList.remove('bg-gray-200', 'text-gray-700');
+                scoreCircle.classList.add('bg-indigo-600', 'text-white');
+                scoreText.classList.add('score-text-lg');
+
+
+                // Set 10-minute lock
+                setTimeout(() => {
+                    formElements.forEach(el => el.disabled = false);
+                    submitButton.disabled = false;
+                    scoreText.textContent = '--/20';
+                    scoreCircle.classList.remove('bg-indigo-600', 'text-white');
+                    scoreCircle.classList.add('bg-gray-200', 'text-gray-700');
+                    scoreText.classList.remove('score-text-lg');
+
+                    document.querySelectorAll('.correct-answer-icon, .incorrect-answer-icon, .correct-hint').forEach(el => el.remove());
+                    document.querySelectorAll('.correct-border, .incorrect-border').forEach(el => el.classList.remove('correct-border', 'incorrect-border'));
+                }, 600000); // 10 minutes (600000 ms)
+            });
+        });
+    </script>
+</body>
+</html>
